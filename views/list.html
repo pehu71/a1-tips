@@ -1,0 +1,9 @@
+<h1>{{list.h1}}</h1>
+
+<table>
+    <tr ng-repeat="book in list.books">
+        <td>{{book.id}}</td>
+        <td><a href="#/detail/{{book.id}}?lang=en">{{book.name}}</a></td>
+        <td>{{book.author}}</td>
+    </tr>
+</table>

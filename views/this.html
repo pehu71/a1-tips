@@ -1,0 +1,18 @@
+<h1>The weird this</h1>
+
+<pre>
+        var self = this;
+
+        $http.get('data/books.json')
+            .then(function (res) {
+                self.books = res.data.books;
+            })
+</pre>
+
+<table>
+    <tr ng-repeat="s in weird.books">
+        <td>{{s.id}}</td>
+        <td>{{s['name']}}</td>
+        <td>{{s['author']}}</td>
+    </tr>
+</table>

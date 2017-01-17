@@ -1,0 +1,31 @@
+<h1>Pipes and filter performance</h1>
+
+<p><strong>open console</strong></p>
+
+<p>
+    <em>View version "pipe.companies | findKey: 'FO' : 'view'"</em><br>
+    Company: {{pipe.companies | findKey: 'FO' : 'view'}}
+</p>
+
+<p>
+    <em>Model version "findKeyFilter(this.companies, 'FO', 'controller')"</em><br>
+    Company: {{pipe.company}}
+</p>
+
+<p>
+    <em>Model version "$filter('findKey')(this.companies, 'FO', 'controller')"</em><br>
+    Company: {{pipe.company}}
+</p>
+
+
+<input type="text" ng-model="pipe.textModel">
+
+<p>
+    If the pipe filters object or array, it gets executed on every $digest loop! Only for primitive values it doesn't.
+</p>
+
+<p>
+    <strong>
+        If you need to filter large arrays or objects, do so in controllers, it gets executed once!
+    </strong>
+</p>
