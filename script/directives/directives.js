@@ -20,4 +20,20 @@ angular.module('directives', [])
 
             controllerAs: 'ctrl' // must declare controllerAs - use it in component template
         };
+    })
+    .directive('myAddressDirective', function () {
+        return {
+            restrict: 'E',
+            template: '<p><input type="text" ng-model="customer.name"></p>'
+        }
+    })
+
+    .directive('myAddressDirectiveIsolated', function () {
+        return {
+            restrict: 'E',
+            scope: {},      // or scope = true
+            // todo: but we can let them accept parent model explicitly
+            // scope: {customer: '='},
+            template: '<p><input type="text" ng-model="customer.name"></p>'
+        }
     });

@@ -40,7 +40,8 @@ angular.module('controllers', [])
         this.textModel = '';
     }])
 
-    .controller('DirectiveCtrl', function () {})
+    .controller('DirectiveCtrl', function () {
+    })
 
     .controller('ThisCtrl', ['$http', function ($http) {
         var self = this;
@@ -50,3 +51,16 @@ angular.module('controllers', [])
                 self.books = res.data.books; // todo: use "this" instead of "self"
             })
     }])
+
+    .controller('ScopeInheritanceCtrlParent', ['$scope', function ($scope) {
+        $scope.customer = {
+            name: 'Abraham',
+            lastName: 'Lincoln',
+            age: 300,
+            address: 'Lincoln Street 1, 01019 Ivo'
+        }
+    }])
+
+    .controller('ScopeInheritanceCtrlChild', ['$scope', function ($scope) {
+
+    }]);
