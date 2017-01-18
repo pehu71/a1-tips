@@ -13,6 +13,7 @@
     "angular-route": "^1.4.8"
   },
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "lite-server": "^2.2.2"
   }
 }

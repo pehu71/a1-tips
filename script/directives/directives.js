@@ -1,16 +1,5 @@
-<h2>Component directives - example for A1 < 1.5</h2>
-Note:
-This is fully functional and recommended way to write component directives for A1, which can be easily migrated to A2 components. <br>
-This version works for AngularJS version < 1.5, AngularJS 1.5 introduces "component API", which is even more convenient for
-many reasons, and also for later upgrade to A2 components.
-<hr>
-
-<my-component-directive some-param="2017"></my-component-directive>
-
-<hr>
-
-<pre>
-        .directive('myComponentDirective', function () {
+angular.module('directives', [])
+    .directive('myComponentDirective', function () {
         return {
             restrict: 'E', // must be restricted to Element
             scope: {}, // must have isolated scope
@@ -31,5 +20,4 @@ many reasons, and also for later upgrade to A2 components.
 
             controllerAs: 'ctrl' // must declare controllerAs - use it in component template
         };
-    })
-</pre>
+    });
