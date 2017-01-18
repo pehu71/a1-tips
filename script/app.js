@@ -130,8 +130,8 @@ angular.module('app', ['ngRoute'])
             .when('/component-directives', {templateUrl: 'views/component-directives.html', controller: 'DirectiveCtrl'})
             .when('/this', {templateUrl: 'views/this.html', controller: 'ThisCtrl as weird'});
 
-        //$locationProvider.html5Mode(true);
-        //$locationProvider.hashPrefix('');
+        // $locationProvider.html5Mode(true);
+        // $locationProvider.hashPrefix('');
     }]);
 
 angular.bootstrap(document, ['app']);
