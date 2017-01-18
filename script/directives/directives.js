@@ -21,6 +21,7 @@ angular.module('directives', [])
             controllerAs: 'ctrl' // must declare controllerAs - use it in component template
         };
     })
+
     .directive('myAddressDirective', function () {
         return {
             restrict: 'E',
