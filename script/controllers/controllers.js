@@ -63,4 +63,8 @@ angular.module('controllers', [])
 
     .controller('ScopeInheritanceCtrlChild', ['$scope', function ($scope) {
 
+    }])
+
+    .controller('ArrayNotationCtrl', ['$scope', function ($scope) {
+
     }]);

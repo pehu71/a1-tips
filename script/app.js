@@ -8,7 +8,8 @@ angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories',
             .when('/pipes', {templateUrl: 'views/pipes.html', controller: 'PipeCtrl as pipe'})
             .when('/component-directives', {templateUrl: 'views/component-directives.html', controller: 'DirectiveCtrl'})
             .when('/this', {templateUrl: 'views/this.html', controller: 'ThisCtrl as weird'})
-            .when('/scope-inheritance', {templateUrl: 'views/scope-inheritance.html', controller: 'ScopeInheritanceCtrlParent'});
+            .when('/scope-inheritance', {templateUrl: 'views/scope-inheritance.html', controller: 'ScopeInheritanceCtrlParent'})
+            .when('/array-notation', {templateUrl: 'views/array-notation.html', controller: 'ArrayNotationCtrl as notation'});
 
         // $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('');

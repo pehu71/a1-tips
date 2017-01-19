@@ -1,0 +1,46 @@
+<h1>DI array notation</h1>
+
+<p>DI is one of the most powerful features of Angular (both versions), but it has to be treated properly. There are basically two ways, how to use injectables which can <strong>survive uglification</strong></p>
+<p>The correct array notation method <strong>applies the same for</strong>:</p>
+<ul>
+    <li>controllers</li>
+    <li>directives</li>
+    <li>providers</li>
+    <li>services</li>
+    <li>...</li>
+</ul>
+
+<h2>Demo on very simple directive</h2>
+
+<h3>Wrong method</h3>
+<simple-di-one></simple-di-one>
+
+<pre>
+    .directive('simpleDiOne', function ($location) {
+        return {
+            restrict: 'E',
+            template: '<p>simpleDiOne directive - I will not survive uglyfication. Location path: {{path}}</p>',
+            link: function ($scope) {
+                $scope.path = $location.path();
+            }
+        }
+    });
+</pre>
+
+<h3>Correct method - array notation</h3>
+<simple-di-two></simple-di-two>
+
+<pre>
+    .directive('simpleDiTwo', ['$location', function ($location) {
+        return {
+            restrict: 'E',
+            template: '<p>simpleDiOne directive - I WILL survive uglyfication. Location path: {{path}}</p>',
+            link: function ($scope) {
+                $scope.path = $location.path();
+            }
+        }
+    }]);
+</pre>
+<br>
+
+
