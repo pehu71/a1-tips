@@ -1,6 +1,6 @@
 angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters'])
 
-    .config(['$routeProvider', function ($routeProvider, $locationProvider) {
+    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {templateUrl: 'views/welcome.html', controller: 'WelcomeCtrl as welcome'})
             .when('/list', {templateUrl: 'views/list.html', controller: 'ListCtrl as list'})
@@ -11,7 +11,7 @@ angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories',
             .when('/scope-inheritance', {templateUrl: 'views/scope-inheritance.html', controller: 'ScopeInheritanceCtrlParent'});
 
         // $locationProvider.html5Mode(true);
-        // $locationProvider.hashPrefix('');
+        $locationProvider.hashPrefix('');
     }]);
 
 angular.bootstrap(document, ['app']);
