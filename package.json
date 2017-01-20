@@ -1,5 +1,5 @@
 {
-  "name": "a1-routing",
+  "name": "a1-tips",
   "version": "1.0.0",
   "description": "AngularJS routing example",
   "main": "index.js",
@@ -13,7 +13,10 @@
     "angular-route": "^1.4.8"
   },
   "devDependencies": {
+    "@types/angular": "^1.6.2",
+    "@types/jquery": "^2.0.39",
     "bootstrap": "^3.3.7",
     "lite-server": "^2.2.2"
-  }
+  },
+  "repository": "https://github.com/pehu71/a1-tips.git"
 }

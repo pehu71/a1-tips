@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters'])
+angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters', 'tsControllers'])
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -14,5 +14,7 @@ angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories',
         // $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('');
     }]);
+
+angular.module('tsControllers', []);
 
 angular.bootstrap(document, ['app']);
