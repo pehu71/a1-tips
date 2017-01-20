@@ -1,0 +1,48 @@
+<h1>Mixing AngularJS app with full flavoured TypeScript modules</h1>
+
+<hr>
+
+<p>{{sample.path}}</p>
+
+<hr>
+
+<h3>Steps to follow to make this hybrid live</h3>
+
+<ul>
+    <li>Install proper type definitions: @types/jquery and @types/angular</li>
+    <li>Add tsconfig.json file, tune it up later (exclude node_modules)</li>
+    <li>Follow the pattern of TypeScript module for such a hybrid application</li>
+</ul>
+
+<h4>The very basic configuration</h4>
+
+<p>In app.js - your application entry point reference your module</p>
+
+<pre>
+angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters', <span style="color:blue;font-weight:bold">'tsModule'</span>])
+</pre>
+
+<p>Write the module in TypeScript pattern. Don't forget the upper-most "hack-line"</p>
+
+<pre>
+<span style="color:blue;font-weight:bold">angular.module('tsModule', []);</span>
+
+module tsModule {
+
+    let tsm = angular.module('tsModule');
+
+    export class SampleController {
+
+        constructor() {}
+    }
+
+    tsm.controller('SampleController', tsModule.SampleController);
+}
+</pre>
+
+<p><strong>Note:</strong><br>
+This is not the best way how to do it. If you want to integrate TS in your AngularJS app, start with app.ts entry point first
+    and then import external TS modules by import statements. This is just a way how to do it without rebuilding half of your current application
+    and enjoy TS pros at the same time.
+</p>
+<br>

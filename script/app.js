@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters', 'tsControllers'])
+angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters', 'tsModule'])
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -9,12 +9,11 @@ angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories',
             .when('/component-directives', {templateUrl: 'views/component-directives.html', controller: 'DirectiveCtrl'})
             .when('/this', {templateUrl: 'views/this.html', controller: 'ThisCtrl as weird'})
             .when('/scope-inheritance', {templateUrl: 'views/scope-inheritance.html', controller: 'ScopeInheritanceCtrlParent'})
-            .when('/array-notation', {templateUrl: 'views/array-notation.html', controller: 'ArrayNotationCtrl as notation'});
+            .when('/array-notation', {templateUrl: 'views/array-notation.html', controller: 'ArrayNotationCtrl as notation'})
+            .when('/mix-with-ts', {templateUrl: 'views/mix-with-ts.html', controller: 'SampleController as sample'});
 
         // $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('');
     }]);
-
-angular.module('tsControllers', []);
 
 angular.bootstrap(document, ['app']);
