@@ -40,9 +40,15 @@ module tsModule {
 }
 </pre>
 
-<p><strong>Note:</strong><br>
+<h4>Note 1</h4>
+<p>
 This is not the best way how to do it. If you want to integrate TS in your AngularJS app, start with app.ts entry point first
     and then import external TS modules by import statements. This is just a way how to do it without rebuilding half of your current application
     and enjoy TS pros at the same time.
+</p>
+<h4>Note 2</h4>
+<p>
+    Notice that "angular.module" is something completely different from TypeScript (ES6) "external module". TypeScript external modules are
+    being imported via <strong>import</strong> statement - this is the reason I mentioned previous note.
 </p>
 <br>
