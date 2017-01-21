@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters', 'tsModule'])
+angular.module('app', ['ngRoute', 'directives', 'trans-directives', 'controllers', 'data-factories', 'filters', 'tsModule'])
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
