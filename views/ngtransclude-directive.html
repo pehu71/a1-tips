@@ -1,4 +1,35 @@
-<h2>ngTranslude directive</h2>
-<p>Purpose: enables you to embed a portion of DOM from the outer environment to your directive and access the scope of the embedded code</p>
+<h2>ngTransclude directive</h2>
+<p>Purpose: enables you to embed a portion of DOM from the outer environment to your directive and access the scope of
+    the embedded code</p>
 
 <h3>Simple transclusion example</h3>
+<p>The "original" directive content is aquamarine color. The transcluded portion od DOM is bisque color.</p>
+<simple-transclude read="ngt.read">
+    <div style="background-color: bisque;border: solid 1px black;padding:6px;">
+        <a href="{{ngt.licLink}}" ng-click="ngt.read = true" target="_blank">please read the license</a>
+    </div>
+</simple-transclude>
+<br>
+<div class="alert alert-info">
+    <p>Notice that both parent controller and directive use the "controllerAs" pattern and communicate via explicit
+        binding. Which prevents scope inheritance mess.</p>
+</div>
+
+<h3>Transclusion with fallback</h3>
+<p>There is much more to transclusion in AngularJS starting from version 1.5.x:</p>
+<ul>
+    <li>Transclusion with fallback content</li>
+    <li>Multi slot transclusion</li>
+</ul>
+
+<h3>transcludeFn in link function</h3>
+<!--todo: find the transcludeFn-->
+<p>Let us look here: </p>
+<p>There is a way of how to control transclusion from JS inside the link function of a directive. But - it is tightly coupled with $compileProvider API
+which is not supported in Angular2. So, if you wanna migrate your directives (application) to Angular2 later, just forgot about it. The Angular2 compiler and
+DOM manipulation works in a completely different way. And - everything you can do inside the link function using transcludeFn is automatically done by ngTransclude directive.</p>
+
+<div class="aler alert-info">
+    <p>My advice is: use ngTransclude directives when apropriate, but do not bother with the low level $compile API and things like transcludeFn in link function
+        - it brings you no benefit, and will be discarded when upgrading your app to Angular2.</p>
+</div>
