@@ -1,0 +1,9 @@
+body {
+    font-size: 16px;
+}
+
+ul.survival {}
+
+ul.survival > li {
+    font-size: 19px;
+}
