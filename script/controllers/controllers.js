@@ -67,4 +67,8 @@ angular.module('controllers', [])
 
     .controller('ArrayNotationCtrl', ['$scope', function ($scope) {
 
+    }])
+
+    .controller('NgTransludeCtrl', ['$scope', function ($scope) {
+
     }]);
