@@ -3,6 +3,7 @@
 <hr>
 
 <p>{{sample.path}}</p>
+<sample-directive color="'#fff'"></sample-directive>
 
 <hr>
 
@@ -19,7 +20,8 @@
 <p>In app.js - your application entry point reference your module</p>
 
 <pre>
-angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters', <span style="color:blue;font-weight:bold">'tsModule'</span>])
+angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters', <span
+        style="color:blue;font-weight:bold">'tsModule'</span>])
 </pre>
 
 <p>Write the module in TypeScript pattern. Don't forget the upper-most "hack-line"</p>
@@ -42,13 +44,23 @@ module tsModule {
 
 <h4>Note 1</h4>
 <p>
-This is not the best way how to do it. If you want to integrate TS in your AngularJS app, start with app.ts entry point first
-    and then import external TS modules by import statements. This is just a way how to do it without rebuilding half of your current application
+    This is not the best way how to do it. If you want to integrate TS in your AngularJS app, start with app.ts entry
+    point first
+    and then import external TS modules by import statements. This is just a way how to do it without rebuilding half of
+    your current application
     and enjoy TS pros at the same time.
 </p>
 <h4>Note 2</h4>
 <p>
-    Notice that "angular.module" is something completely different from TypeScript (ES6) "external module". TypeScript external modules are
+    Notice that "angular.module" is something completely different from TypeScript (ES6) "external module". TypeScript
+    external modules are
     being imported via <strong>import</strong> statement - this is the reason I mentioned previous note.
 </p>
+<div class="row">
+    <div class="alert alert-info" role="alert">
+        <h3>Conclusion</h3>
+        <p>This is a way, how to migrate AngularJS app written in JS per partes to TypeScript. Anyway - not the one I
+            would recommend. See angular-hybrid-app repo.</p>
+    </div>
+</div>
 <br>

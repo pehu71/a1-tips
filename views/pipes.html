@@ -2,29 +2,37 @@
 
 <p>
     <strong>Company: {{pipe.companies | findKey: 'FO' : 'view'}}</strong><br>
-    View version <pre>pipe.companies | findKey: 'FO' : 'view'</pre>
+    View version
+<pre>pipe.companies | findKey: 'FO' : 'view'</pre>
 </p>
 
 <p>
     <strong>Company: {{pipe.company}}</strong><br>
-    Model version <pre>findKeyFilter(this.companies, 'FO', 'controller 1')</pre>
+    Model version
+<pre>findKeyFilter(this.companies, 'FO', 'controller 1')</pre>
 </p>
 
 <p>
     <strong>Company: {{pipe.company}}</strong><br>
-    Model version <pre>$filter('findKey')(this.companies, 'FO', 'controller 2')</pre>
+    Model version
+<pre>$filter('findKey')(this.companies, 'FO', 'controller 2')</pre>
 </p>
 
 <label for="modelBox">Change some model and check console what happens</label>
 <input id="modelBox" type="text" ng-model="pipe.textModel">
 
-<h3>Conclusion</h3>
-<p>
-    If the pipe filters object or array, it gets executed on every $digest loop! <strong>Only for primitive values it doesn't</strong>.
-</p>
+<div class="row">
+    <div class="alert alert-info" role="alert">
+        <h3>Conclusion</h3>
+        <p>
+            If the pipe filters object or array, it gets executed on every $digest loop! Only for primitive
+            values it doesn't.
+        </p>
 
-<p>
-    <strong>
-        If you need to filter large arrays or objects, do so in CONTROLLERS, it gets executed once!
-    </strong>
-</p>
+        <p>
+            <strong>
+                If you need to filter large arrays or objects, do so in CONTROLLERS, it gets executed once!
+            </strong>
+        </p>
+    </div>
+</div>

@@ -16,30 +16,30 @@
 <simple-di-one></simple-di-one>
 
 <pre>
-    .directive('simpleDiOne', function ($location) {
-        return {
-            restrict: 'E',
-            template: '<p>simpleDiOne directive - I will not survive uglyfication. Location path: {{path}}</p>',
-            link: function ($scope) {
-                $scope.path = $location.path();
-            }
+.directive('simpleDiOne', function ($location) {
+    return {
+        restrict: 'E',
+        template: '&lt;p&gt;simpleDiOne directive - I will not survive uglyfication. Location path: {{path}}&lt;/p&gt;',
+        link: function ($scope) {
+            $scope.path = $location.path();
         }
-    });
+    }
+});
 </pre>
 
 <h3>Correct method - array notation</h3>
 <simple-di-two></simple-di-two>
 
 <pre>
-    .directive('simpleDiTwo', ['$location', function ($location) {
-        return {
-            restrict: 'E',
-            template: '<p>simpleDiOne directive - I WILL survive uglyfication. Location path: {{path}}</p>',
-            link: function ($scope) {
-                $scope.path = $location.path();
-            }
+.directive('simpleDiTwo', ['$location', function ($location) {
+    return {
+        restrict: 'E',
+        template: '&lt;p&gt;simpleDiOne directive - I WILL survive uglyfication. Location path: {{path}}&lt;/p&gt;',
+        link: function ($scope) {
+            $scope.path = $location.path();
         }
-    }]);
+    }
+}]);
 </pre>
 <br>
 

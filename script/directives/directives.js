@@ -12,9 +12,10 @@ angular.module('directives', [])
 
             controller: function () { // must have its own controller - manipulate directive template via controller, not scope
                 this.someText = 'I am component directive - you fucking click me!';
+                this.afterClick = undefined;
 
                 this.onClick = function () {
-                    alert('clicked');
+                    this.afterClick = 'Hey, you clicked me!';
                 }
             },
 

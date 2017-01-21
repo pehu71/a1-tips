@@ -2,22 +2,22 @@
 
 <div class="row">
     <h4>Parent scope - ScopeInheritanceCtrlParent</h4>
-    <p>{{customer | json}}</p>
     <p><input type="text" ng-model="customer.name"></p>
 
     <div ng-controller="ScopeInheritanceCtrlChild">
         <h4>Child scope - ScopeInheritanceCtrlChild</h4>
-        <p>{{customer | json}}</p>
         <p><input type="text" ng-model="customer.name"></p>
-        <p><strong>Note</strong>, that the child scope doesn't have it's own model "customer". It <strong>inherits the parent scope</strong>.</p>
+        <p><strong>Note</strong>, that the child scope doesn't have it's own model "customer". It <strong>inherits the
+            parent scope</strong>.</p>
     </div>
 
     <h4>Address directive</h4>
-    <p>Think - do we always need such behavior? Especially in case of directives?</p>
+    <p>Think - do we always need such behavior - I mean inheriting parent scope? Especially in case of directives?</p>
     <my-address-directive></my-address-directive>
 
     <h4>Address directive - isolated scope</h4>
-    <p>The is one of the very best practises when writing directives - let them have tehir scopes isolated, not to mess up with other scope models in the same view.</p>
+    <p>The is one of the very best practises when writing directives - let them have tehir scopes isolated, not to mess
+        up with other scope models in the same view.</p>
     <my-address-directive-isolated></my-address-directive-isolated>
 
     <!--todo: but we can let them accept parent model explicitly-->
@@ -26,10 +26,15 @@
 </div>
 
 <div class="row">
-    <h3>Conclusion</h3>
-    <ul>
-        <li>Be aware of scope inheritance</li>
-        <li>Isolate scopes for directives, if you need let them accept the parent model explicitly <label class="label label-warning">see code</label></li>
-        <li>Try to write your directives in a <a href="#/component-directives">component directive manner</a>, or use component API (AngularJS ver. >= 1.5)</li>
-    </ul>
+    <div class="alert alert-info" role="alert">
+        <h3>Conclusion</h3>
+        <ul>
+            <li>Be aware of scope inheritance</li>
+            <li>Isolate scopes for directives, if you need let them accept the parent model explicitly <label
+                    class="label label-warning">see code</label></li>
+            <li>Try to write your directives in a <a href="#/component-directives">component directive manner</a>, or
+                use component API (AngularJS ver. >= 1.5)
+            </li>
+        </ul>
+    </div>
 </div>
