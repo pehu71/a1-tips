@@ -29,8 +29,14 @@
 
 <hr>
 <h3>Our capitalLetters custom validation directive in action</h3>
-<label for="capital">Valid only if capital:</label>
-<input id="capital" ng-model="val.someText" type="text" capital-letters>&nbsp;<span class="label label-warning">Open console</span>
+<form name="theForm">
+    <label for="capital">Valid only if capital:</label>
+    <input id="capital" ng-model="val.someText" type="text" capital-letters>&nbsp;<span
+        class="label label-warning">Open console</span>
+    <button type="button" ng-disabled="theForm.$invalid" class="btn btn-default" ng-class="{'disabled': theForm.$invalid}">Send</button>
+</form>
+
+<hr>
 
 <p>Let us look at the console report with "ctrl" object. Focus on these properties:</p>
 <ul>
@@ -43,6 +49,7 @@
 
 <p>Also we can inspect Elements view in dev tools, and check the value of <strong>class</strong> attribute in
     valid/invalid states.</p>
+<p>Look what it does with the <strong>parent form</strong> element.</p>
 
 <hr>
 <h3>The source code</h3>
@@ -78,8 +85,14 @@
 });
 </pre>
 
-<p>And the HTML implementation even simpler:</p>
+<p>And the HTML implementation even simpler. To integrate the form validity state to the Send button, you just need to give the form a name.
+Then reference the form via its name right from the view, you don't even need to do anything in the controller:</p>
 <pre>
-&lt;input id="capital" ng-model="val.someText" type="text" capital-letters&gt;
+&lt;form name="theForm"&gt;
+    &lt;label for="capital"&gt;Valid only if capital:&lt;/label&gt;
+    &lt;input id="capital" ng-model="val.someText" type="text" capital-letters&gt;&nbsp;&lt;span
+        class="label label-warning"&gt;Open console&lt;/span&gt;
+    &lt;button type="button" ng-disabled="theForm.$invalid" class="btn btn-default" ng-class="{'disabled': theForm.$invalid}"&gt;Send&lt;/button&gt;
+&lt;/form&gt;
 </pre>
 <br>
