@@ -1,12 +1,12 @@
 {
   "name": "a1-tips",
   "version": "1.0.0",
-  "description": "AngularJS routing example",
+  "description": "AngularJS key tips",
   "main": "index.js",
   "scripts": {
     "lite": "lite-server"
   },
-  "author": "Petr -pehu- Humplik",
+  "author": "Petr -pehu- Humplík",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.4.8",
