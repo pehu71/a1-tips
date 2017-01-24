@@ -22,17 +22,13 @@
     <li>Multi slot transclusion</li>
 </ul>
 
-<h3>transcludeFn in link function</h3>
-<!--todo: find the transcludeFn-->
-<!--https://code.angularjs.org/1.5.8/docs/guide/directive-->
-<!--https://code.angularjs.org/1.5.8/docs/api/ng/service/$compile#-link- -->
-<!--https://code.angularjs.org/1.4.12/docs/api/ng/service/$compile -->
-<p>Let us look here: </p>
+<h3>transcludeFn in a link function</h3>
+
 <p>There is a way of how to control transclusion from JS inside the link function of a directive. But - it is tightly coupled with $compileProvider API
-which is not supported in Angular2. So, if you wanna migrate your directives (application) to Angular2 later, just forgot about it. The Angular2 compiler and
+which is not supported in Angular2. So, if you wanna migrate your directives (application) to Angular2 later, just forget about it. The Angular2 compiler and
 DOM manipulation works in a completely different way. And - everything you can do inside the link function using transcludeFn is automatically done by ngTransclude directive.</p>
 
-<div class="aler alert-info">
-    <p>My advice is: use ngTransclude directives when apropriate, but do not bother with the low level $compile API and things like transcludeFn in link function
+<div class="alert alert-info">
+    <p>My advice is: use ngTransclude directives when appropriate, but do not bother with the low level $compile API and things like transcludeFn in link function
         - it brings you no benefit, and will be discarded when upgrading your app to Angular2.</p>
 </div>

@@ -1,0 +1,147 @@
+<h2>Testing with Jasmine</h2>
+
+<h3>Get familiar with Jasmine</h3>
+<p>Jasmine is a BDD framework - which stands for Behavior Driven Testing. This means it test micro scenarios - function
+    chains.
+</p>
+<p>Of course the best practise is to compose your test from the typical Unit Tests on single function level and then
+    chain them to the BDD
+    micro scenario.</p>
+<div>
+    <img src="img/bdd.png">
+</div>
+<p>More information can be found on Jasmine home page: <a href="https://jasmine.github.io/pages/getting_started.html">Jasmine
+    - Behavior Driven Javascript</a></p>
+
+<h3>Install Jasmine</h3>
+<p>There are many ways how to do it:</p>
+<ul>
+    <li>You can either use Jasmine <a href="https://github.com/jasmine/jasmine/releases">stand-alone library from
+        GitHub</a></li>
+    <li>You can use npm</li>
+</ul>
+
+
+<h3>Install angular mocks</h3>
+<p>To test your angular project with Jasmine there is one more thing you need - angular mock library.</p>
+
+<pre>
+npm install angular-mocks --save-dev
+</pre>
+
+<h3>Have your components testable</h3>
+<p>Testing needs a little setup, let's just mention the most crutial aspects.</p>
+<ul>
+    <li>As mentioned in the chapter <a href="#/">Survival guide</a> - have your project well structured. At least group
+        your features
+        to modules, if you don't like the idea of having each directive or controller in separate file (recommended
+        setup)
+    </li>
+    <li>Keep the tests as close to your production code as possible, if possible right side by side with your production
+        file (recommended setup).
+    </li>
+</ul>
+<p></p>
+
+<h3>Write your test</h3>
+<p>Let us take a look at short example of email validator directive (script/directives/validators.js):</p>
+<pre>
+    .directive('tsuEmailValidator', function () {
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, elem, attrs, ctrl) {
+                ctrl.$parsers.unshift(function (value) {
+                    if (value) {
+                        var valid = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,8})$/.test(value);
+                        ctrl.$setValidity('email', valid);
+                        return valid ? value : undefined;
+                    } else {
+                        ctrl.$setValidity('email', true);
+                        return true;
+                    }
+                });
+            }
+        }
+    });
+</pre>
+
+<p>Now we need to write a simple test to test the behavior of our directive. Such test can look like this
+    (validators-test.js).</p>
+<pre>
+    describe('validators', function () {
+
+    beforeEach(function () {
+       module('validators') <span style="color:blue">// load validators module before each test</span>
+    });
+
+    describe('tsuEmailValidator', function () {
+
+    beforeEach(inject(function($compile, $rootScope){ <span style="color:blue">// the inject function comes from angular-mocks</span>
+            $scope = $rootScope;
+            var element = angular.element( <span style="color:blue">// let us fake some form element</span>
+                '&lt;form name="form"&gt;&lt;input type="text" name="customerEmail" ng-model="model.customerEmail" tsu-email-validator&gt;&lt;/form&gt;'
+            );
+            $scope.model = { customerEmail: null}; <span style="color:blue">// assign model to scope</span>
+            $compile(element)($scope); <span style="color:blue">// since we have our element manually created, we must compile it first</span>
+            $scope.$digest();
+            form = $scope.form;
+        }));
+
+        it('when nothing given it should be valid', function () {
+            expect(form.customerEmail.$valid).toBe(true);
+        });
+
+        it('when given email is not IANA then input should be $invalid and its parent form as well', function () {
+            form.customerEmail.$setViewValue('gonz@h');
+            expect(form.customerEmail.$valid).toBe(false);
+        });
+
+        it('when given email is not IANA valid it should have "ng-invalid-email" and "ng-invalid-parse" errors (+ css classes) and its parent form as well', function () {
+            form.customerEmail.$setViewValue('gonz@h');
+            expect(form.customerEmail.$error.email).toBeDefined();
+        })
+    });
+
+});
+</pre>
+
+<h3>Set up your spec (test) runner page</h3>
+<p>Now we just need to set up some page that will run our tests - this is called spec runner in Jasmine terminology.
+    Let's look what it has to have inside:</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Jasmine Spec Runner v2.5.2&lt;/title&gt;
+
+    &lt;link rel="shortcut icon" type="image/png" href="lib/jasmine-2.5.2/jasmine_favicon.png"&gt;
+    &lt;link rel="stylesheet" href="lib/jasmine-2.5.2/jasmine.css"&gt;
+
+    &lt;!-- include all required libraries here... --&gt;
+    &lt;script src="lib/jasmine-2.5.2/jasmine.js"&gt;&lt;/script&gt;
+    &lt;script src="lib/jasmine-2.5.2/jasmine-html.js"&gt;&lt;/script&gt;
+    &lt;script src="lib/jasmine-2.5.2/boot.js"&gt;&lt;/script&gt;
+    &lt;script src="node_modules/angular/angular.js"&gt;&lt;/script&gt;
+    &lt;script src="node_modules/angular-mocks/angular-mocks.js"&gt;&lt;/script&gt;
+
+    &lt;!-- include source files here... --&gt;
+    &lt;script src="script/directives/validators.js"&gt;&lt;/script&gt;
+
+    &lt;!-- include spec files here... --&gt;
+    &lt;script src="script/directives/validators-test.js"&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<div class="alert alert-info">
+    <p>This is just kind of some inline testing scenario for a single developer on his local box. For an automated
+        testing on project level
+        we would need some kind of of automated test runner - Karma is recommended by Angular team for this purpose.</p>
+</div>

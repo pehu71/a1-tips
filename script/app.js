@@ -11,7 +11,8 @@ angular.module('app', ['ngRoute', 'directives', 'trans-directives', 'controllers
             .when('/scope-inheritance', {templateUrl: 'views/scope-inheritance.html', controller: 'ScopeInheritanceCtrlParent'})
             .when('/array-notation', {templateUrl: 'views/array-notation.html', controller: 'ArrayNotationCtrl as notation'})
             .when('/mix-with-ts', {templateUrl: 'views/mix-with-ts.html', controller: 'SampleController as sample'})
-            .when('/ngtransclude-directive', {templateUrl: 'views/ngtransclude-directive.html', controller: 'NgTransludeCtrl as ngt'});
+            .when('/ngtransclude-directive', {templateUrl: 'views/ngtransclude-directive.html', controller: 'NgTransludeCtrl as ngt'})
+            .when('/jasmine-tests', {templateUrl: 'views/jasmine-tests.html', controller: 'JasmineTestCtrl as jasmine'});
 
         // $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('');
