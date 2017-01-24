@@ -78,6 +78,6 @@ angular.module('controllers', [])
 
     })
 
-    .controller('CustomValidatorsCtrl', function ($scope) {
-        $scope.someText = '';
+    .controller('CustomValidatorsCtrl', function () {
+        this.someText = '';
     });

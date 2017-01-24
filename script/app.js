@@ -13,7 +13,7 @@ angular.module('app', ['ngRoute', 'directives', 'trans-directives', 'controllers
             .when('/mix-with-ts', {templateUrl: 'views/mix-with-ts.html', controller: 'SampleController as sample'})
             .when('/ngtransclude-directive', {templateUrl: 'views/ngtransclude-directive.html', controller: 'NgTransludeCtrl as ngt'})
             .when('/jasmine-tests', {templateUrl: 'views/jasmine-tests.html', controller: 'JasmineTestCtrl as jasmine'})
-            .when('/custom-validators', {templateUrl: 'views/custom-validators.html', controller: 'CustomValidatorsCtrl'});
+            .when('/custom-validators', {templateUrl: 'views/custom-validators.html', controller: 'CustomValidatorsCtrl as val'});
 
         // $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('');
