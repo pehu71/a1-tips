@@ -1,0 +1,85 @@
+<h2>Custom validators</h2>
+
+<p>The key concept of validation can be studied from <a
+        href="https://docs.angularjs.org/api/ng/type/ngModel.NgModelController" target="_blank">AngularJS API reference
+    for
+    ngModel.NgModelController</a></p>
+
+<p>The best way how to not re-invent the wheel and do it clean, is just to add your validator to the chain of validator
+    functions
+    which are already present and validate your model. To achieve this, simply use the $parsers array of the model
+    controller, which
+    can be supplied as a parameter to your custom validation directive.</p>
+
+<p>Let us read what AngularJS API reference states on this topic (I could not say it any better)</p>
+
+<div class="alert alert-info">
+    <h3>$parsers</h3>
+    <strong>Array of functions to execute, as a pipeline, whenever the control reads value from the DOM</strong>. The
+    functions are
+    called in array order, each passing its return value through to the next. The last return value is forwarded to the
+    <strong>$validators</strong> collection.<br><br>
+
+    Parsers are used to sanitize / convert the $viewValue.<br><br>
+
+    Returning undefined from a parser means a parse error occurred. In that case, no $validators will run and the
+    ngModel will be set to undefined unless ngModelOptions.allowInvalid is set to true. The parse error is stored in
+    <strong>ngModel.$error.parse</strong>.
+</div>
+
+<hr>
+<h3>Our capitalLetters custom validation directive in action</h3>
+<label for="capital">Valid only if capital:</label>
+<input id="capital" ng-model="val.someText" type="text" capital-letters>&nbsp;<span class="label label-warning">Open console</span>
+
+<p>Let us look at the console report with "ctrl" object. Focus on these properties:</p>
+<ul>
+    <li>$valid, $touched, $pristine</li>
+    <li>$modelValue - what it does when valid/invalid</li>
+    <li>$viewValue - what it does when valid/invalid</li>
+    <li>$parsers - what it does when valid/invalid</li>
+    <li>$error - what it does when valid/invalid</li>
+</ul>
+
+<p>Also we can inspect Elements view in dev tools, and check the value of <strong>class</strong> attribute in
+    valid/invalid states.</p>
+
+<hr>
+<h3>The source code</h3>
+<p>The JS code of our directive is really pretty simple, here we go:</p>
+<pre>
+.directive('capitalLetters', function (){
+    return {
+        restrict: 'A',
+        require: 'ngModel', // very important, because the ctrl param is in fact "ngModel.NgModelController"
+        link: function (scope, elem, attrs, ctrl) {
+            ctrl.$parsers.unshift(function (value) {
+                if (value) {
+
+                    console.log(ctrl);
+
+                    var valid = /^[A-Z]*$/.test(value);
+                    ctrl.$setValidity('capitalLetters', valid);
+                    return valid ? value : undefined;
+
+                    // returning undefined means there was a validation error
+                    // otherwise we're passing the value on through the chain of $parsers
+
+                } else {
+
+                    // if there is nothing, it is most probably not touched yet, it is on us how to handle this
+                    // depends on "business scenario"
+                    ctrl.$setValidity('capitalLetters', true);
+                    return true;
+                }
+            })
+        }
+    }
+});
+</pre>
+
+<p>And the HTML implementation even simpler:</p>
+<pre>
+&lt;input id="capital" ng-model="val.someText" type="text" capital-letters&gt;
+</pre>
+<br>
