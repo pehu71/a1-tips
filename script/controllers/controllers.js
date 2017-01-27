@@ -83,7 +83,16 @@ angular.module('controllers', [])
     })
 
     .controller('CmpApiCtrl', function () {
-        this.onAddNotification = function (count) {
-            console.log(count)
+
+        this.sins = [{id: 0, title: 'gluttony', severity: 'light'}, {id: 1, title: 'adultery', severity: 'deadly'}];
+        this.messages = [];
+
+        this.deadlyOnly = function () {
+           this.listApi.filterDeadly()
+        };
+
+        var ctrl = this;
+        this.onDeleteNotification = function (sinId) {
+            ctrl.messages.push('deletion refused for id: ' + sinId);
         }
     });

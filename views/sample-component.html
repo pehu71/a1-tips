@@ -1,3 +1,21 @@
-<div><p ng-if="listCtrl.show">{{listCtrl.quote}}</p>
-    <p ng-repeat="sin in listCtrl.sins" ng-click="listCtrl.addSin()">{{sin.title}}</p>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>severity</th>
+            <th>action</th>
+        </tr>
+        </thead>
+
+        <tr ng-repeat="sin in listCtrl.sins | filter: {severity: listCtrl.filterExp}">
+            <td>{{sin.id}}</td>
+            <td>{{sin.title}}</td>
+            <td>{{sin.severity}}</td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="listCtrl.deleteSin(sin.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
 </div>
