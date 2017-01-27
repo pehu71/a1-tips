@@ -23,6 +23,9 @@
 <hr>
 
 <div class="row">
+    <div class="col col-lg-12">
+        <h3>Component inserted to page</h3>
+    </div>
     <div class="col col-lg-12" style="background-color:cadetblue">
         <div class="col col-lg-4">
             <h4>Parent controller</h4>
@@ -32,11 +35,56 @@
         <div class="col col-lg-8">
             <p ng-repeat="m in cmp.messages track by $index">{{m}}</p>
         </div>
-
         <div class="col col-lg-12"  style="background-color:bisque">
             <h4>Component</h4>
             <sin-list sins="cmp.sins" list-api="cmp.listApi" on-delete="cmp.onDeleteNotification(id)"></sin-list>
         </div>
+    </div>
+    <div class="col col-lg-12">
+        <h4>Here we go - the code of the component JS:</h4>
+        <pre>
+    .component('sinList', {
+
+        bindings: {
+            sins: '<', // input only binding
+            onDelete: '&', // event binding
+            listApi: '=' // typical two-way binding
+        },
+
+        /*
+        * we could use registered component as well
+        * also we could pass $scope, $element, $attrs params, if we needed them for something
+        * */
+        controller: function () {
+            var ctrl = this;
+            ctrl.filterExp = '';
+
+            /*
+             * child-to-parent communication
+             * we do not operate right on input data (as we would by using '=' binding)
+             * we expose callback and let the parent controller decide what to do with the event
+             **/
+            ctrl.deleteSin = function (id) {
+                ctrl.onDelete({id: id});
+            };
+
+            ctrl.$onInit = function () {
+                /*
+                 * we expose API in this life-cycle hook to enable parent-to-child communication
+                 * */
+                ctrl.listApi = {
+                    filterDeadly: function () {
+                        ctrl.filterExp = 'deadly';
+                    }
+                }
+            }
+
+        },
+        controllerAs: 'listCtrl',
+        templateUrl: 'views/sample-component.html'
+
+    });
+        </pre>
     </div>
 </div>
 
@@ -45,6 +93,20 @@
 <div class="row">
     <div class="col col-lg-12">
         <h3>Routing to component</h3>
-
+        Let's route to the sinList component: <a href="#/sin-list">sinList component as a target route</a>
+    </div>
+    <div class="col col-lg-12">
+        <p>And this is the code we need in the $routeProvider configuration:</p>
+        <pre>
+            .when('/sin-list', {template: '&lt;sin-list sins="$resolve.sins" list-api="$resolve.listApi" on-delete="$resolve.onDeleteNotification(id)">&lt;/sin-list>',
+                resolve: {
+                    sins: function () { return [{id: 0, title: 'gluttony', severity: 'light'}, {id: 1, title: 'adultery', severity: 'deadly'}]},
+                    listApi: function () { return {}},
+                    onDeleteNotification: function () { return function (id) { alert('refused deletion of: ' + id) }}
+                }
+            });
+        </pre>
     </div>
 </div>
+<br>
+<br>

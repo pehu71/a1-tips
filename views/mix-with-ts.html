@@ -10,14 +10,14 @@
 <h3>Steps to follow to make this hybrid live</h3>
 
 <ul>
-    <li>Install proper type definitions: @types/jquery and @types/angular</li>
+    <li>Install proper type definitions: @types/angular</li>
     <li>Add tsconfig.json file, tune it up later (exclude node_modules)</li>
     <li>Follow the pattern of TypeScript module for such a hybrid application</li>
 </ul>
 
 <h4>The very basic configuration</h4>
 
-<p>In app.js - your application entry point reference your module</p>
+<p>Don't forget to reference your module in application entry point - app.js in this case.</p>
 
 <pre>
 angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters', <span
@@ -54,7 +54,8 @@ module tsModule {
 <p>
     Notice that "angular.module" is something completely different from TypeScript (ES6) "external module". TypeScript
     external modules are
-    being imported via <strong>import</strong> statement - this is the reason I mentioned previous note.
+    being imported via <strong>import</strong> statement - this is the reason I mentioned previous note. Here is the repository of how this can be achieved:
+    <a href="https://github.com/pehu71/angularjs-pure-typescript" target="_blank">https://github.com/pehu71/angularjs-pure-typescript</a>.
 </p>
 
 <div class="alert alert-info" role="alert">

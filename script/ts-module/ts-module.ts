@@ -16,7 +16,7 @@ module tsModule {
             restrict: 'E',
             scope: {},
             template: `
-            <div style="padding:6px;background-color: #bbbbbb;cursor:pointer;">
+            <div style="padding:6px;background-color:cadetblue;cursor:pointer;">
                 <label>sample-directive</label>
                 <p ng-click="ctrl.onClick()" style="color:{{ctrl.color}};">{{ctrl.someText}}</p>
             </div>

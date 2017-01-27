@@ -11,7 +11,7 @@ var tsModule;
         return {
             restrict: 'E',
             scope: {},
-            template: "\n            <div style=\"padding:6px;background-color: #bbbbbb;cursor:pointer;\">\n                <label>sample-directive</label>\n                <p ng-click=\"ctrl.onClick()\" style=\"color:{{ctrl.color}};\">{{ctrl.someText}}</p>\n            </div>\n            ",
+            template: "\n            <div style=\"padding:6px;background-color:cadetblue;cursor:pointer;\">\n                <label>sample-directive</label>\n                <p ng-click=\"ctrl.onClick()\" style=\"color:{{ctrl.color}};\">{{ctrl.someText}}</p>\n            </div>\n            ",
             bindToController: {
                 color: '='
             },

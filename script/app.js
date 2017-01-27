@@ -15,7 +15,14 @@ angular.module('app', ['ngRoute', 'directives', 'trans-directives', 'controllers
             .when('/ngtransclude-directive', {templateUrl: 'views/ngtransclude-directive.html', controller: 'NgTransludeCtrl as ngt'})
             .when('/jasmine-tests', {templateUrl: 'views/jasmine-tests.html', controller: 'JasmineTestCtrl as jasmine'})
             .when('/custom-validators', {templateUrl: 'views/custom-validators.html', controller: 'CustomValidatorsCtrl as val'})
-            .when('/cmp-api-intro', {templateUrl: 'views/component-api.html', controller: 'CmpApiCtrl as cmp'});
+            .when('/cmp-api-intro', {templateUrl: 'views/component-api.html', controller: 'CmpApiCtrl as cmp'})
+            .when('/sin-list', {template: '<sin-list sins="$resolve.sins" list-api="$resolve.listApi" on-delete="$resolve.onDeleteNotification(id)"></sin-list>',
+                resolve: {
+                    sins: function () { return [{id: 0, title: 'gluttony', severity: 'light'}, {id: 1, title: 'adultery', severity: 'deadly'}]},
+                    listApi: function () { return {}},
+                    onDeleteNotification: function () { return function (id) { alert('refused deletion of: ' + id) }}
+                }
+            });
 
         // $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('');
