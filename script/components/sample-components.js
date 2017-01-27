@@ -3,7 +3,8 @@ angular.module('sample-components', [])
     .component('listComponent', {
 
         bindings: {
-            show: '<'
+            show: '<',
+            onAdd: '&'
         },
 
         controller: function ($scope, $element, $attrs) {
@@ -12,12 +13,13 @@ angular.module('sample-components', [])
             ctrl.quote = 'sdfd ade ew wewee qwewqe wewe weew';
 
             ctrl.addSin = function () {
-                ctrl.sins.push({title: 'clicking', severity: 10})
+                // ctrl.sins.push({title: 'clicking', severity: 10});
+                ctrl.onAdd({count: 1});
             };
 
         },
         controllerAs: 'listCtrl',
-        template: '<div><p ng-if="listCtrl.show">{{listCtrl.quote}}</p><p ng-repeat="sin in listCtrl.sins" ng-click="listCtrl.addSin()">{{sin.title}}</p></div>'
+        templateUrl: 'views/sample-component.html'
 
     });
 

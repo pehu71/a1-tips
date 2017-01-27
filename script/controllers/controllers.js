@@ -83,5 +83,7 @@ angular.module('controllers', [])
     })
 
     .controller('CmpApiCtrl', function () {
-
+        this.onAddNotification = function (count) {
+            console.log(count)
+        }
     });
