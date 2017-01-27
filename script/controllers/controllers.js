@@ -70,8 +70,7 @@ angular.module('controllers', [])
     }])
 
     .controller('NgTransludeCtrl', function () {
-        this.licLink = 'http://www.redtube.com/information#terms';
-        this.read = false;
+        this.searchExpression = '';
     })
 
     .controller('JasmineTestCtrl', function () {

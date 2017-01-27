@@ -1,8 +1,14 @@
-<div style="background-color: cadetblue;padding:6px;">
-    <p><strong>Legal notice</strong></p>
-    <p>By checking the checkbox you state, that you've read and agree with our Terms of service. [You read the terms:
-        {{ctrl.read}}]</p>
-    <input type="checkbox" ng-model="ctrl.agreed" ng-disabled="!ctrl.read"> I've read the terms of the license
+<div style="background-color:cadetblue;padding:6px;border:solid 1px black">
 
-    <ng-transclude></ng-transclude>
+    <ng-transclude>
+        <!--this is the fallback content-->
+        <p style="color:white;border:white 1px solid;padding:3px;">There was no header element provided!</p>
+    </ng-transclude>
+
+    <div style="background-color: white;padding:6px;border:solid 1px black">
+
+        <p ng-repeat="name in ctrl.list | filter: ctrl.searchExp">{{name}}</p>
+
+    </div>
+
 </div>

@@ -1,34 +1,79 @@
-<h2>ngTransclude directive</h2>
-<p>Purpose: enables you to embed a portion of DOM from the outer environment to your directive and access the scope of
-    the embedded code</p>
+<div class="row">
 
-<h3>Simple transclusion example</h3>
-<p>The "original" directive content is cadet blue color. The transcluded portion od DOM is bisque color.</p>
-<simple-transclude read="ngt.read">
-    <div style="background-color: bisque;border: solid 1px black;padding:6px;">
-        <a href="{{ngt.licLink}}" ng-click="ngt.read = true" target="_blank">please read the license</a>
+    <div class="col col-lg-12">
+        <h2>ngTransclude directive</h2>
+        <p>Purpose: enables you to embed a portion of DOM from the outer environment to your directive and access the
+            scope of
+            the embedded code</p>
     </div>
-</simple-transclude>
-<br>
-<div class="alert alert-info">
-    <p>Notice that both parent controller and directive use the "controllerAs" pattern and communicate via explicit
-        binding, which prevents scope inheritance mess.</p>
+
+    <div class="col col-lg-12">
+        <h3>Simple transclusion example</h3>
+
+        <p>The "original" directive content is cadet blue color. The transcluded portion od DOM is bisque color.</p>
+        <p>Look how we managed to bind together the two controllers - parent controller <strong>ngt</strong> and the
+            directive controller via binding to property <strong>search-exp</strong></p>
+
+        <simple-transclude search-exp="ngt.searchExpression">
+            <!--trnascluded content-->
+            <div style="background-color: bisque;border: solid 1px black;padding:6px;">
+                <label>This is the header of the tile</label>
+                <input type="text" ng-model="ngt.searchExpression">
+            </div>
+            <!--end transcluded content-->
+        </simple-transclude>
+
+        <br>
+
+        <div class="alert alert-info">
+            <p>Notice that both parent controller and directive use the "controllerAs" pattern and communicate via
+                explicit
+                binding, which prevents scope inheritance mess.</p>
+        </div>
+    </div>
 </div>
 
-<h3>Transclusion with fallback</h3>
-<p>There is much more to transclusion in AngularJS starting from version 1.5.x:</p>
-<ul>
-    <li>Transclusion with fallback content</li>
-    <li>Multi slot transclusion</li>
-</ul>
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Transclusion with fallback</h3>
+        <p>Right now we will reuse the directive from previous example, but we will provide no content for the Title
+            bar. We will just count on the fallback content.</p>
 
-<h3>transcludeFn in a link function</h3>
+        <simple-transclude search-exp="ngt.searchExpression">
+        </simple-transclude>
 
-<p>There is a way of how to control transclusion from JS inside the link function of a directive. But - it is tightly coupled with $compileProvider API
-which is not supported in Angular2. So, if you wanna migrate your directives (application) to Angular2 later, just forget about it. The Angular2 compiler and
-DOM manipulation works in a completely different way. And - everything you can do inside the link function using transcludeFn is automatically done by ngTransclude directive.</p>
+    </div>
+</div>
 
-<div class="alert alert-info">
-    <p>My advice is: use ngTransclude directives when appropriate, but do not bother with the low level $compile API and things like transcludeFn in link function
-        - it brings you no benefit, and will be discarded when upgrading your app to Angular2.</p>
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Multi slot transclusion</h3>
+        <p>Let us extend the directive, and iject also some footer into it. Such pattern is called multi-slot
+            transclusion</p>
+
+        <multi-slot-transclude search-exp="ngt.searchExpression">
+
+            <multi-slot-transclude-header>
+                <div style="background-color: bisque;border: solid 1px black;padding:6px;">
+                    <label>This is the header of the tile</label>
+                    <input type="text" ng-model="ngt.searchExpression">
+                </div>
+            </multi-slot-transclude-header>
+
+            <multi-slot-transclude-footer>
+                <div style="background-color: bisque;border: solid 1px black;padding:6px;">
+                    <label>This is the footer of the tile</label>
+                </div>
+            </multi-slot-transclude-footer>
+
+        </multi-slot-transclude>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>transcludeFn in a link function</h3>
+
+    </div>
 </div>

@@ -1,0 +1,18 @@
+<div style="background-color:cadetblue;padding:6px;border:solid 1px black">
+
+    <ng-transclude ng-transclude-slot="header">
+        <!--this is the fallback content-->
+        <p style="color:white;border:white 1px solid;padding:3px;">There was no HEADER element provided!</p>
+    </ng-transclude>
+
+    <div style="background-color: white;padding:6px;border:solid 1px black">
+
+        <p ng-repeat="name in ctrl.list | filter: ctrl.searchExp">{{name}}</p>
+
+    </div>
+
+    <ng-transclude ng-transclude-slot="footer">
+        <p style="color:white;border:white 1px solid;padding:3px;">There was no FOOTER element provided!</p>
+    </ng-transclude>
+
+</div>
