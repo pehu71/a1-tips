@@ -7,7 +7,7 @@
     "lite": "lite-server"
   },
   "author": "Petr -pehu- Humplík",
-  "license": "ISC",
+  "license": "WTFPL",
   "dependencies": {
     "angular": "^1.6.1",
     "angular-route": "^1.6.1"
