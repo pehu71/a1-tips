@@ -1,4 +1,5 @@
-angular.module('app', ['ngRoute', 'directives', 'trans-directives', 'controllers', 'data-factories', 'filters', 'tsModule', 'capital-letters-validator'])
+angular.module('app', ['ngRoute', 'directives', 'trans-directives', 'controllers', 'data-factories', 'filters',
+    'tsModule', 'capital-letters-validator', 'sample-components'])
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -13,7 +14,8 @@ angular.module('app', ['ngRoute', 'directives', 'trans-directives', 'controllers
             .when('/mix-with-ts', {templateUrl: 'views/mix-with-ts.html', controller: 'SampleController as sample'})
             .when('/ngtransclude-directive', {templateUrl: 'views/ngtransclude-directive.html', controller: 'NgTransludeCtrl as ngt'})
             .when('/jasmine-tests', {templateUrl: 'views/jasmine-tests.html', controller: 'JasmineTestCtrl as jasmine'})
-            .when('/custom-validators', {templateUrl: 'views/custom-validators.html', controller: 'CustomValidatorsCtrl as val'});
+            .when('/custom-validators', {templateUrl: 'views/custom-validators.html', controller: 'CustomValidatorsCtrl as val'})
+            .when('/cmp-api-intro', {templateUrl: 'views/component-api.html', controller: 'CmpApiCtrl as cmp'});
 
         // $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('');

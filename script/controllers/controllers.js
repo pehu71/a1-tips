@@ -80,4 +80,8 @@ angular.module('controllers', [])
 
     .controller('CustomValidatorsCtrl', function () {
         this.someText = '';
+    })
+
+    .controller('CmpApiCtrl', function () {
+
     });
