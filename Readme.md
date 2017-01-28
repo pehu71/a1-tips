@@ -21,6 +21,7 @@ to get inspired, or simply go elsewhere. It's up to you.
 * Scope inheritance
 * Component directives
 * Component API
+* Component API - lifecycle-hooks
 * Transclusion - ngTransclude directive
 * Custom validators
 * Mixing AngularJS app with full flavoured TypeScript modules
