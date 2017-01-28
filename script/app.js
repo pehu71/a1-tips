@@ -1,6 +1,6 @@
-angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories', 'filters',
-    'tsModule', 'capital-letters-validator', 'chapter1', 'chapter2', 'chapter3',
-    'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter9'])
+angular.module('app', ['ngRoute', 'data-factories', 'filters',
+    'tsModule', 'chapter1', 'chapter2', 'chapter3',
+    'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter9', 'chapter10', 'chapter11'])
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -21,11 +21,9 @@ angular.module('app', ['ngRoute', 'directives', 'controllers', 'data-factories',
                 }
             })
             .when('/ngtransclude-directive', {templateUrl: 'chapters/c09/ngtransclude-directive.html', controller: 'NgTransludeCtrl as ngt'})
-            .when('/mix-with-ts', {templateUrl: 'views/mix-with-ts.html', controller: 'SampleController as sample'})
-
-            .when('/jasmine-tests', {templateUrl: 'views/jasmine-tests.html', controller: 'JasmineTestCtrl as jasmine'})
-            .when('/custom-validators', {templateUrl: 'views/custom-validators.html', controller: 'CustomValidatorsCtrl as val'})
-
+            .when('/custom-validators', {templateUrl: 'chapters/c10/custom-validators.html', controller: 'CustomValidatorsCtrl as val'})
+            .when('/jasmine-tests', {templateUrl: 'chapters/c11/jasmine-tests.html', controller: 'JasmineTestCtrl as jasmine'})
+            .when('/mix-with-ts', {templateUrl: 'chapters/c12/mix-with-ts.html', controller: 'SampleController as sample'})
 ;
 
         // $locationProvider.html5Mode(true);

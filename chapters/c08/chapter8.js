@@ -18,7 +18,7 @@ angular.module('chapter8', [])
 
         bindings: {
             sins: '<', // input only binding
-            onDelete: '&', // event binding
+            onDelete: '&', // output event binding
             listApi: '=' // typical two-way binding
         },
 

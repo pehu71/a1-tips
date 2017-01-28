@@ -1,46 +1,58 @@
-<h1>DI array notation</h1>
+<div class="row">
+    <div class="col col-lg-12">
+        <h2>DI array notation</h2>
 
-<p>DI is one of the most powerful features of Angular (both versions), but it has to be treated properly. There are basically two ways, how to use injectables which can <strong>survive uglification</strong></p>
-<p>The correct array notation method <strong>applies the same for</strong>:</p>
-<ul>
-    <li>controllers</li>
-    <li>directives</li>
-    <li>providers</li>
-    <li>services</li>
-    <li>...</li>
-</ul>
+        <p>DI is one of the most powerful features of Angular (both versions), but it has to be treated properly. There
+            are basically two ways, how to use injectables which can <strong>survive uglification</strong></p>
+        <p>The correct array notation method <strong>applies the same for</strong>:</p>
+        <ul>
+            <li>controllers</li>
+            <li>directives</li>
+            <li>providers</li>
+            <li>services</li>
+            <li>...</li>
+        </ul>
+    </div>
+</div>
 
-<h2>Demo on very simple directive</h2>
-
-<h3>Wrong method</h3>
-<simple-di-one></simple-di-one>
-
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Wrong method</h3>
+        <div style="background-color: cadetblue;padding:6px;color:white;">
+            <simple-di-one></simple-di-one>
+        </div>
 <pre>
 .directive('simpleDiOne', function ($location) {
     return {
         restrict: 'E',
-        template: '&lt;p&gt;simpleDiOne directive - I will not survive uglyfication. Location path: {{path}}&lt;/p&gt;',
+        template: '&lt;p&gt;simpleDiOne directive - I will not survive uglyfication. Location path: &#123;&#123;path&#125;&#125;&lt;/p&gt;',
         link: function ($scope) {
             $scope.path = $location.path();
         }
     }
 });
 </pre>
+    </div>
+</div>
 
-<h3>Correct method - array notation</h3>
-<simple-di-two></simple-di-two>
-
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Correct method - array notation</h3>
+        <div style="background-color: cadetblue;padding:6px;color:white;">
+            <simple-di-two></simple-di-two>
+        </div>
 <pre>
 .directive('simpleDiTwo', ['$location', function ($location) {
     return {
         restrict: 'E',
-        template: '&lt;p&gt;simpleDiOne directive - I WILL survive uglyfication. Location path: {{path}}&lt;/p&gt;',
+        template: '&lt;p&gt;simpleDiOne directive - I WILL survive uglyfication. Location path: &#123;&#123;path&#125;&#125;&lt;/p&gt;',
         link: function ($scope) {
             $scope.path = $location.path();
         }
     }
 }]);
 </pre>
-<br>
-
+        <br>
+    </div>
+</div>
 
