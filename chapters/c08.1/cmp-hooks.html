@@ -1,0 +1,17 @@
+<div>
+    <div>
+        <label>Input param:<span style="color:blue;">{{$ctrl.inputParam}}</span></label>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Parameter</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="m in $ctrl.messages track by $index">
+            <td>{{m.title}}</td>
+            <td>{{m.param | json}}</td>
+        </tr>
+    </table>
+</div>

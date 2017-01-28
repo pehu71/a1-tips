@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col col-lg-12">
+        <h2>c08.1 - Component API - lifecycle-hooks</h2>
+        <p>Lifecycle-hooks simply let you intercept some important events in the life of your component. This model is
+            implemented in Angular2 from the very beginning through interface implementation, and
+            I have a slight suspicion, that it was back-implemented to AngularJS.</p>
+        <p>On this page we're gonna demonstrate this essential life-cycle hooks:</p>
+        <ul>
+            <li><strong>$onInit</strong> - called on each controller after all the controllers on an element have been constructed and had their bindings initialized.</li>
+            <li><strong>$postLink</strong> - called after this controller's element and its children have been linked.</li>
+            <li><strong>$onChanges</strong> - called whenever one-way bindings are updated.</li>
+            <li><strong>$onDestroy</strong> - called on a controller when its containing scope is destroyed.</li>
+            <li>...there is more in AngularJS documentation</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Parent controller</h3>
+        <p>Pass input param to the directive:<input type="text" ng-model="cmpLsh.paramToDirective"></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Directive</h3>
+        <cpm-hooks input-param="cmpLsh.paramToDirective"></cpm-hooks>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+      <div class="alert alert-info">
+          <strong>Hey -</strong> isn't this a nice way to get rid of some ugly watches (performance killers in most cases)?
+      </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 angular.module('app', ['ngRoute', 'data-factories', 'filters',
     'tsModule', 'chapter1', 'chapter2', 'chapter3',
-    'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter9', 'chapter10', 'chapter11'])
+    'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter8-1', 'chapter9', 'chapter10', 'chapter11'])
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -13,6 +13,7 @@ angular.module('app', ['ngRoute', 'data-factories', 'filters',
             .when('/scope-inheritance', {templateUrl: 'chapters/c06/scope-inheritance.html', controller: 'ScopeInheritanceCtrlParent'})
             .when('/component-directives', {templateUrl: 'chapters/c07/component-directives.html', controller: 'DirectiveCtrl'})
             .when('/cmp-api-intro', {templateUrl: 'chapters/c08/component-api.html', controller: 'CmpApiCtrl as cmp'})
+            .when('/cmp-api-lsh', {templateUrl: 'chapters/c08.1/component-api-lsh.html', controller: 'CmpApiLshCtrl as cmpLsh'})
             .when('/sin-list', {template: '<sin-list sins="$resolve.sins" list-api="$resolve.listApi" on-delete="$resolve.onDeleteNotification(id)"></sin-list>',
                 resolve: {
                     sins: function () { return [{id: 0, title: 'gluttony', severity: 'light'}, {id: 1, title: 'adultery', severity: 'deadly'}]},
