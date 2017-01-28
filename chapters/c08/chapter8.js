@@ -1,5 +1,19 @@
-angular.module('sample-components', [])
+angular.module('chapter8', [])
 
+    .controller('CmpApiCtrl', function () {
+
+        this.sins = [{id: 0, title: 'gluttony', severity: 'light'}, {id: 1, title: 'adultery', severity: 'deadly'}];
+        this.messages = [];
+
+        this.deadlyOnly = function () {
+            this.listApi.filterDeadly()
+        };
+
+        var ctrl = this;
+        this.onDeleteNotification = function (sinId) {
+            ctrl.messages.push('deletion refused for id: ' + sinId);
+        }
+    })
     .component('sinList', {
 
         bindings: {
@@ -9,9 +23,9 @@ angular.module('sample-components', [])
         },
 
         /*
-        * we could use registered component as well
-        * also we could pass $scope, $element, $attrs params, if we needed them for something
-        * */
+         * we could use registered component as well
+         * also we could pass $scope, $element, $attrs params, if we needed them for something
+         * */
         controller: function () {
             var ctrl = this;
             ctrl.filterExp = '';
@@ -38,7 +52,6 @@ angular.module('sample-components', [])
 
         },
         controllerAs: 'listCtrl',
-        templateUrl: 'views/sample-component.html'
+        templateUrl: 'chapters/c08/sample-component.html'
 
     });
-
