@@ -1,7 +1,7 @@
 angular.module('chapter6', [])
 
     .controller('ScopeInheritanceCtrlParent', ['$scope', function ($scope) {
-        $scope.customer = 'Abraham'; // todo: for primitive value
+        $scope.customer = 'Abraham';
         $scope.address = {
             streetName: 'Husakova',
             streetNumber: '1971'
@@ -12,7 +12,7 @@ angular.module('chapter6', [])
         return {
             restrict: 'E',
             scope: false,
-            template: '<p><input type="text" ng-model="customer"></p>'
+            template: '<p><input type="text" ng-model="customer"><input type="text" ng-model="address.streetName"></p>'
         }
     })
 
@@ -20,7 +20,7 @@ angular.module('chapter6', [])
         return {
             restrict: 'E',
             scope: true,
-            template: '<p><input type="text" ng-model="customer"></p>'
+            template: '<p><input type="text" ng-model="customer"><input type="text" ng-model="address.streetName">&nbsp;<label class="label label-danger">beware oof arrays, objects!</label></p>'
         }
     })
 
@@ -28,23 +28,23 @@ angular.module('chapter6', [])
         return {
             restrict: 'E',
             scope: {},
-            template: '<p><input type="text" ng-model="customer"></p>'
+            template: '<p><input type="text" ng-model="customer"><input type="text" ng-model="address.streetName"></p>'
         }
     })
 
     .directive('myAddressScopeIsolatedTwoway', function () {
         return {
             restrict: 'E',
-            scope: {customer: '='},
-            template: '<p><input type="text" ng-model="customer"></p>'
+            scope: {customer: '=', streetName: '='},
+            template: '<p><input type="text" ng-model="customer"><input type="text" ng-model="streetName"></p>'
         }
     })
 
     .directive('myAddressScopeIsolatedInputOnly', function () {
         return {
             restrict: 'E',
-            scope: {customer: '<'},
-            template: '<p><input type="text" ng-model="customer"></p>'
+            scope: {customer: '<', streetName: '<'},
+            template: '<p><input type="text" ng-model="customer"><input type="text" ng-model="streetName"></p>'
         }
     })
 ;

@@ -4,10 +4,17 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" style="border:solid 1px darkslategrey;">
     <div class="col col-lg-12">
-        <h4>Parent scope - ScopeInheritanceCtrlParent</h4>
-        <p><input type="text" ng-model="customer"></p>
+        <h4>Controller - the parent scope (ScopeInheritanceCtrlParent)</h4>
+        <pre>
+$scope.customer = 'Abraham';
+$scope.address = {
+    streetName: 'Husakova',
+    streetNumber: '1971'
+}
+        </pre>
+        <p><input type="text" ng-model="customer"><input type="text" ng-model="address.streetName"></p>
     </div>
 </div>
 
@@ -39,7 +46,7 @@
     <div class="col col-lg-12">
         <h4>scope: {customer: '='}</h4>
         <p>Explicitly stated 2-way binding</p>
-        <my-address-scope-isolated-twoway customer="customer"></my-address-scope-isolated-twoway>
+        <my-address-scope-isolated-twoway customer="customer" street-name="address.streetName"></my-address-scope-isolated-twoway>
     </div>
 </div>
 
@@ -48,16 +55,16 @@
         <h4>scope: {customer: '&lt;'}</h4>
         <p>Explicit input-only binding</p>
         <p>Due to documentation, you can use scope = {'@'} as well, especially for strings that do not change often.</p>
-        <my-address-scope-isolated-input-only customer="customer"></my-address-scope-isolated-input-only>
+        <my-address-scope-isolated-input-only customer="customer" street-name="address.streetName"></my-address-scope-isolated-input-only>
     </div>
 </div>
 
 <div class="alert alert-info" role="alert">
     <h3>Conclusion</h3>
     <ul>
-        <li>Be aware of scope inheritance</li>
-        <li>Isolate scopes for directives, <strong>only let them accept parent model explicitly</strong> <label
-                class="label label-warning">see code</label></li>
+        <li>Be aware of scope inheritance - these little things create deep mess in the final result!</li>
+        <li>Build your application from <strong>components and directives</strong>, not from controllers (A2 way:-))</li>
+        <li>Isolate scopes for directives, <strong>only let them accept parent model explicitly</strong> </li>
         <li>Try to write your directives in a <a href="#/component-directives">component directive manner</a>, or
             use <a href="#/component-directives">component API</a> (AngularJS ver. >= 1.5)
         </li>
