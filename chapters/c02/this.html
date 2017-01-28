@@ -1,4 +1,6 @@
-<h2>The weird this</h2>
+<div class="row">
+    <div class="col col-lg-12">
+        <h2>c02 - The weird this</h2>
 
 <pre>
 var self = this;
@@ -8,15 +10,24 @@ $http.get('data/books.json')
         self.books = res.data.books;
     })
 </pre>
+    </div>
+</div>
 
-<br>
-<hr>
-<div>
-    <table style="width:60%;">
-        <tr ng-repeat="s in weird.books">
-            <td>{{s.id}}</td>
-            <td>{{s['name']}}</td>
-            <td>{{s['author']}}</td>
-        </tr>
-    </table>
+<div class="row">
+    <div class="col col-lg-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>author</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="s in weird.books">
+                <td>{{s.id}}</td>
+                <td>{{s['name']}}</td>
+                <td>{{s['author']}}</td>
+            </tr>
+        </table>
+    </div>
 </div>
