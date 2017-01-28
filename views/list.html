@@ -1,9 +1,22 @@
-<h2>{{list.h1}}</h2>
+<div class="row">
+    <div class="col col-lg-12">
+        <h2>{{list.h1}}</h2>
 
-<table cellspacing="4" cellpadding="4" width="60%">
-    <tr ng-repeat="book in list.books">
-        <td>{{book.id}}</td>
-        <td><a href="#/detail/{{book.id}}?lang=en">{{book.name}}</a></td>
-        <td>{{book.author}}</td>
-    </tr>
-</table>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Author</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="book in list.books">
+                <td>{{book.id}}</td>
+                <td><a href="#/detail/{{book.id}}?lang=en">{{book.name}}</a></td>
+                <td>{{book.author}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

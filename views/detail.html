@@ -1,20 +1,51 @@
-<h2>{{detail.h1}}</h2>
+<div class="row">
+    <div class="col col-lg-12">
+        <h2>{{detail.h1}}</h2>
 
-<p>Name: {{detail.book.name}}</p>
-<p>Author: {{detail.book.author}}</p>
+        <table class="table table-bordered">
+            <tr>
+                <td>Name:</td>
+                <td>{{detail.book.name}}</td>
+            </tr>
+            <tr>
+                <td>Author:</td>
+                <td>{{detail.book.author}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
-<hr>
-<h3>$route service</h3>
-<p>
-    {{detail.routeInfo}}
-</p>
 
-<hr>
-<h3>$location service</h3>
-<p>
-    absUrl: {{detail.locationAbsUrl}}<br>
-    hash: {{detail.locationHash}}<br>
-    path: {{detail.locationPath}}<br>
-    url: {{detail.locationUrl}}<br>
-    search: {{detail.locationSearch}}<br>
-</p>
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>$route service</h3>
+        <pre>
+    this.routeInfo = $route.current;
+</pre>
+        <p>
+            {{detail.routeInfo}}
+        </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>$location service</h3>
+        <pre>
+    this.locationAbsUrl = $location.absUrl();
+    this.locationHash = $location.hash();
+    this.locationPath = $location.path();
+    this.locationUrl = $location.url();
+    this.locationSearch = $location.search();
+</pre>
+        <p>
+            absUrl: {{detail.locationAbsUrl}}<br>
+            hash: {{detail.locationHash}}<br>
+            path: {{detail.locationPath}}<br>
+            url: {{detail.locationUrl}}<br>
+            search: {{detail.locationSearch}}<br>
+        </p>
+    </div>
+</div>
+<br>
