@@ -1,37 +1,65 @@
-<h2>c06 - Scope inheritance</h2>
-
-
-    <h4>Parent scope - ScopeInheritanceCtrlParent</h4>
-    <p><input type="text" ng-model="customer.name"></p>
-
-    <div ng-controller="ScopeInheritanceCtrlChild">
-        <h4>Child scope - ScopeInheritanceCtrlChild</h4>
-        <p><input type="text" ng-model="customer.name"></p>
-        <p><strong>Note</strong>, that the child scope doesn't have it's own model "customer". It <strong>inherits the
-            parent scope</strong>.</p>
+<div class="row">
+    <div class="col col-lg-12">
+        <h2>c06 - Scope inheritance</h2>
     </div>
+</div>
 
-    <h4>Address directive</h4>
-    <p>Think - do we always need such behavior - I mean inheriting parent scope? Especially in case of directives?</p>
-    <my-address-directive></my-address-directive>
-
-    <h4>Address directive - isolated scope</h4>
-    <p>The is one of the very best practises when writing directives - let them have tehir scopes isolated, not to mess
-        up with other scope models in the same view.</p>
-    <my-address-directive-isolated></my-address-directive-isolated>
-
-    <!--todo: but we can let them accept parent model explicitly-->
-    <!--<my-address-directive-isolated customer="customer"></my-address-directive-isolated>-->
-
-<br>
-    <div class="alert alert-info" role="alert">
-        <h3>Conclusion</h3>
-        <ul>
-            <li>Be aware of scope inheritance</li>
-            <li>Isolate scopes for directives, if you need let them accept the parent model explicitly <label
-                    class="label label-warning">see code</label></li>
-            <li>Try to write your directives in a <a href="#/component-directives">component directive manner</a>, or
-                use component API (AngularJS ver. >= 1.5)
-            </li>
-        </ul>
+<div class="row">
+    <div class="col col-lg-12">
+        <h4>Parent scope - ScopeInheritanceCtrlParent</h4>
+        <p><input type="text" ng-model="customer"></p>
     </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h4>scope: false</h4>
+        <p>Two-way, full prototype inheritance</p>
+        <my-address-scope-false></my-address-scope-false>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h4>scope: true</h4>
+        <p>Automatically done implicit input binding.</p>
+        <my-address-scope-true></my-address-scope-true>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h4>scope: {}</h4>
+        <p>Isolated scope, no bindings</p>
+        <my-address-scope-isolated></my-address-scope-isolated>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h4>scope: {customer: '='}</h4>
+        <p>Explicitly stated 2-way binding</p>
+        <my-address-scope-isolated-twoway customer="customer"></my-address-scope-isolated-twoway>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h4>scope: {customer: '&lt;'}</h4>
+        <p>Explicit input-only binding</p>
+        <p>Due to documentation, you can use scope = {'@'} as well, especially for strings that do not change often.</p>
+        <my-address-scope-isolated-input-only customer="customer"></my-address-scope-isolated-input-only>
+    </div>
+</div>
+
+<div class="alert alert-info" role="alert">
+    <h3>Conclusion</h3>
+    <ul>
+        <li>Be aware of scope inheritance</li>
+        <li>Isolate scopes for directives, <strong>only let them accept parent model explicitly</strong> <label
+                class="label label-warning">see code</label></li>
+        <li>Try to write your directives in a <a href="#/component-directives">component directive manner</a>, or
+            use <a href="#/component-directives">component API</a> (AngularJS ver. >= 1.5)
+        </li>
+    </ul>
+</div>

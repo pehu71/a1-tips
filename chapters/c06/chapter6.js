@@ -1,31 +1,50 @@
 angular.module('chapter6', [])
 
     .controller('ScopeInheritanceCtrlParent', ['$scope', function ($scope) {
-        $scope.customer = {
-            name: 'Abraham',
-            lastName: 'Lincoln',
-            age: 300,
-            address: 'Lincoln Street 1, 01019 Ivo'
+        $scope.customer = 'Abraham'; // todo: for primitive value
+        $scope.address = {
+            streetName: 'Husakova',
+            streetNumber: '1971'
         }
     }])
 
-    .controller('ScopeInheritanceCtrlChild', ['$scope', function ($scope) {
-
-    }])
-
-    .directive('myAddressDirective', function () {
+    .directive('myAddressScopeFalse', function () {
         return {
             restrict: 'E',
-            template: '<p><input type="text" ng-model="customer.name"></p>'
+            scope: false,
+            template: '<p><input type="text" ng-model="customer"></p>'
         }
     })
 
-    .directive('myAddressDirectiveIsolated', function () {
+    .directive('myAddressScopeTrue', function () {
         return {
             restrict: 'E',
-            scope: {},      // or scope = true
-            // todo: but we can let them accept parent model explicitly
-            // scope: {customer: '='},
-            template: '<p><input type="text" ng-model="customer.name"></p>'
+            scope: true,
+            template: '<p><input type="text" ng-model="customer"></p>'
         }
-    });
+    })
+
+    .directive('myAddressScopeIsolated', function () {
+        return {
+            restrict: 'E',
+            scope: {},
+            template: '<p><input type="text" ng-model="customer"></p>'
+        }
+    })
+
+    .directive('myAddressScopeIsolatedTwoway', function () {
+        return {
+            restrict: 'E',
+            scope: {customer: '='},
+            template: '<p><input type="text" ng-model="customer"></p>'
+        }
+    })
+
+    .directive('myAddressScopeIsolatedInputOnly', function () {
+        return {
+            restrict: 'E',
+            scope: {customer: '<'},
+            template: '<p><input type="text" ng-model="customer"></p>'
+        }
+    })
+;
