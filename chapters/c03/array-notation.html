@@ -56,3 +56,19 @@
     </div>
 </div>
 
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>strictDi directive/option</h3>
+        <p>Using this approach you force your application to use explicit annotations of injectables, so you prevent the
+            application to get into troubles during uglyfication. There are two basic ways how to do it, depending on how you bootstrap your application.</p>
+        <h4>Implicit bootstrapping</h4>
+        <pre>
+&lt;html ng-app="myApp" ng-strict-di&gt;
+        </pre>
+        <h4>Explicit bootstrapping</h4>
+        <pre>
+angular.module('myApp', []).bootstrap(document.body, ['myApp'], {strictDi: true});
+        </pre>
+    </div>
+</div>
