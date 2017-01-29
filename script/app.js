@@ -1,6 +1,6 @@
 angular.module('app', ['ngRoute', 'data-factories', 'filters',
     'tsModule', 'chapter1', 'chapter2', 'chapter3',
-    'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter8-1', 'chapter9', 'chapter10', 'chapter11'])
+    'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter8-1', 'chapter9', 'chapter9-1', 'chapter10', 'chapter11'])
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -22,6 +22,7 @@ angular.module('app', ['ngRoute', 'data-factories', 'filters',
                 }
             })
             .when('/ngtransclude-directive', {templateUrl: 'chapters/c09/ngtransclude-directive.html', controller: 'NgTransludeCtrl as ngt'})
+            .when('/ngtranscludefn', {templateUrl: 'chapters/c09.1/ngtranscludefn.html', controller: 'TranscludeFnCtrl as tfn'})
             .when('/custom-validators', {templateUrl: 'chapters/c10/custom-validators.html', controller: 'CustomValidatorsCtrl as val'})
             .when('/jasmine-tests', {templateUrl: 'chapters/c11/jasmine-tests.html', controller: 'JasmineTestCtrl as jasmine'})
             .when('/mix-with-ts', {templateUrl: 'chapters/c12/mix-with-ts.html', controller: 'SampleController as sample'})

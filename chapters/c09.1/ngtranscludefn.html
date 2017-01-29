@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col col-lg-12">
+        <h2>c09.1 - Transclusion - manual control with transcludeFn</h2>
+
+        <p>If you want to manually control the insertion and removal of the transcluded content in your directive then
+            you must use this transclude function. When you call a transclude function it returns a a jqLite/JQuery
+            object that contains the compiled DOM, which is linked to the correct transclusion scope.</p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col col-lg-12">
+        <transclude-fn-demo ng-model="tfn.model">
+            <span class="label label-primary">Transcluded DOM</span>
+        </transclude-fn-demo>
+    </div>
+</div>
+
+<!--transcludeFn - A transclude linking function pre-bound to the correct transclusion scope.
+This is the same as the $transclude parameter of directive controllers, see the controller section for details.
+function([scope], cloneLinkingFn, futureParentElement).-->
+
+
+
