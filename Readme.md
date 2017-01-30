@@ -23,6 +23,7 @@ to get inspired, or simply go elsewhere. It's up to you.
 * Component API
 * Component API - lifecycle-hooks
 * Transclusion - ngTransclude directive
+* Transclusion - manual control with transcludeFn
 * Custom validators
 * Mixing AngularJS app with full flavoured TypeScript modules
 * Related repositories list

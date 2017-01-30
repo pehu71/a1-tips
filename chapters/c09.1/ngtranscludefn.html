@@ -11,15 +11,46 @@
 
 <div class="row">
     <div class="col col-lg-12">
-        <transclude-fn-demo ng-model="tfn.model">
-            <span class="label label-primary">Transcluded DOM</span>
+        <h3>More correct version using attach function</h3>
+        <transclude-fn-demo>
+            <div class="alert alert-warning">
+                <p>This is some content I want to pass in my directive - and I don't want to do this as a string via
+                    binding.</p>
+                <p>Because this is some template, let's say.</p>
+            </div>
         </transclude-fn-demo>
     </div>
 </div>
 
-<!--transcludeFn - A transclude linking function pre-bound to the correct transclusion scope.
-This is the same as the $transclude parameter of directive controllers, see the controller section for details.
-function([scope], cloneLinkingFn, futureParentElement).-->
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Simpler but still working way</h3>
+        <transclude-fn-demo2>
+            <div class="alert alert-warning">
+                <p>This is some content I want to pass in my directive - and I don't want to do this as a string via
+                    binding.</p>
+                <p>Because this is some template, let's say.</p>
+            </div>
+        </transclude-fn-demo2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>More on this</h3>
+        <p>Here you are a very nice article on this: <a href="http://teropa.info/blog/2015/06/09/transclusion.html"
+                                                        target="_blank">A Guide To Transclusion in AngularJS</a></p>
+        <p>But let us move to the conclusion:</p>
+
+        <div class="alert alert-info">
+            In 99.9 % of cases you achieve nothing by this manual transclusion technique. Focus on simple things - they
+            work with less bugs!
+            Use <a href="#/ngtransclude-directive">ngTransclude directive</a> which does the same for you and
+            automatically!
+        </div>
+
+    </div>
+</div>
 
 
 
