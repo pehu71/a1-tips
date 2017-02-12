@@ -26,6 +26,7 @@ angular.module('app', ['ngRoute', 'data-factories', 'filters',
             .when('/custom-validators', {templateUrl: 'chapters/c10/custom-validators.html', controller: 'CustomValidatorsCtrl as val'})
             .when('/jasmine-tests', {templateUrl: 'chapters/c11/jasmine-tests.html', controller: 'JasmineTestCtrl as jasmine'})
             .when('/mix-with-ts', {templateUrl: 'chapters/c12/mix-with-ts.html', controller: 'SampleController as sample'})
+            .when('/related-repos', {templateUrl: 'chapters/related-repos/related-repos.html', controller: 'RelatedCtrl as related'})
 ;
 
         // $locationProvider.html5Mode(true);
