@@ -1,4 +1,3 @@
-// https://docs.angularjs.org/guide/unit-testing
 describe('controllers', function () {
 
     beforeEach(function () {
