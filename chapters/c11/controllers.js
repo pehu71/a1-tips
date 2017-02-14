@@ -1,7 +1,12 @@
 angular.module('controllers', [])
 
-.controller('fictionalController', ['$scope', function ($) {
+.controller('customerController', ['$scope', function ($scope) {
 
-    // https://docs.angularjs.org/guide/unit-testing
+    $scope.customerSn = '';
+
+    $scope.checkCustomerSn = function () {
+        var sn = parseInt($scope.customerSn);
+        return sn % 11 == 0;
+    }
 
 }]);
